@@ -3,6 +3,11 @@ output "arn" {
   value = "${element(concat(aws_lambda_function.this.*.arn, list("")), 0)}"
 }
 
+output "function_name" {
+  # The Amazon Resource Name (ARN) identifying your Lambda Function.
+  value = "${element(concat(aws_lambda_function.this.*.function_name, list("")), 0)}"
+}
+
 output "qualified_arn" {
   # The Amazon Resource Name (ARN) identifying your Lambda Function Version (if versioning is enabled via publish = true).
   value = "${element(concat(aws_lambda_function.this.*.qualified_arn, list("")), 0)}"

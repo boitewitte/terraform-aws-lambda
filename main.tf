@@ -8,9 +8,7 @@ module "label" {
 
 data "aws_caller_identity" "current" {}
 
-data "aws_region" "current" {
-  current = true
-}
+data "aws_region" "current" {}
 
 data "aws_iam_policy_document" "logs" {
   statement {
@@ -59,7 +57,8 @@ resource "aws_iam_role_policy_attachment" "network-attachment" {
 }
 
 resource "aws_iam_role_policy_attachment" "custom" {
-  count                 = "${length(var.execution_policies)}"
+  # count                 = "${length(var.execution_policies)}"
+  count                 = "${var.execution_policies_count}"
 
   role                  = "${aws_iam_role.role.name}"
 

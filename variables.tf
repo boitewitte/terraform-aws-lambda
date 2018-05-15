@@ -63,6 +63,12 @@ variable "timeout" {
   default = "3"
 }
 
+variable "execution_policies_count" {
+  type = "string"
+  description = "Workaround for list of resources count"
+  default = "0"
+}
+
 variable "execution_policies" {
   type = "list"
   description = "The list of ARNs of the policies you want to apply to the Lambda execution role."

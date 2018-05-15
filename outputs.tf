@@ -4,7 +4,7 @@ output "arn" {
 }
 
 output "function_name" {
-  # The Amazon Resource Name (ARN) identifying your Lambda Function.
+  # The Function Name identifying your Lambda Function.
   value = "${element(concat(aws_lambda_function.this.*.function_name, list("")), 0)}"
 }
 

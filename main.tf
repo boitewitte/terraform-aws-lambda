@@ -85,6 +85,8 @@ resource "aws_lambda_function" "this" {
   memory_size         = "${var.memory_size}"
   timeout             = "${var.timeout}"
 
+  publish             = "${var.publish}"
+
   tags                = "${module.label.tags}"
 
   environment         = {

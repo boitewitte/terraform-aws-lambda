@@ -63,6 +63,12 @@ variable "timeout" {
   default = "3"
 }
 
+variable "publish" {
+  type = "string"
+  description = "Whether to publish creation/change as new Lambda Function Version."
+  default = false
+}
+
 variable "execution_policies_count" {
   type = "string"
   description = "Workaround for list of resources count"

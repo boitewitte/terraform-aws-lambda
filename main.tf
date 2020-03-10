@@ -102,19 +102,19 @@ resource "aws_lambda_function" "this" {
 }
 
 resource "aws_lambda_alias" "alias" {
-  count = var.alias_name != "" && var.alias_version != "" ? 1 : 0
+  count = var.alias_name != "" && var.alias_version != "" && length(aws_lambda_function.this) == 1 ? 1 : 0
 
   name             = var.alias_name
   description      = var.alias_description
-  function_name    = aws_lambda_function.this.arn
+  function_name    = aws_lambda_function.this[0].arn
   function_version = var.alias_version
 }
 
 resource "aws_lambda_event_source_mapping" "event_source" {
-  count = var.es_arn != "" ? 1 : 0
+  count = var.es_arn != "" && length(aws_lambda_function.this) == 1 ? 1 : 0
 
   event_source_arn = var.es_arn
-  function_name    = aws_lambda_function.this.arn
+  function_name    = aws_lambda_function.this[0].arn
 
   enabled = var.es_enabled
 

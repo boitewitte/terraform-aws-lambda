@@ -89,13 +89,13 @@ resource "aws_lambda_function" "this" {
 
   tags = module.label.tags
 
-  environment = {
+  environment {
     variables = var.environment_variables
   }
 
   # dead_letter_config  = var.dead_letter_config
 
-  vpc_config = {
+  vpc_config {
     subnet_ids         = var.vpc_subnet_ids
     security_group_ids = var.vpc_security_group_ids
   }
